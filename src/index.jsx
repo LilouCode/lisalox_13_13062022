@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./app/store";
+import { store } from "./store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
-import Home from "./pages/Home";
-import SignIn from "./pages/SignIn";
-import User from "./pages/User";
+import Home from "./_pages/Home";
+import SignIn from "./_pages/SignIn";
+import User from "./_pages/User";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,7 +18,7 @@ root.render(
         <Routes>
           <Route path="/" element={<App/>}> 
             <Route path="/" element={<Home/>}/>
-            <Route path="/signIn" element={<SignIn/>}/>
+            <Route path="/login" element={<SignIn/>}/>
             <Route path="/user" element={<User/>}/>
           </Route>
         </Routes>
