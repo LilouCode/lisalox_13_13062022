@@ -9,6 +9,7 @@ import "./index.css";
 import Home from "./_pages/Home";
 import SignIn from "./_pages/SignIn";
 import User from "./_pages/User";
+import Error from "./_pages/Error"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -20,6 +21,7 @@ root.render(
             <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<SignIn/>}/>
             <Route path="/user" element={<User/>}/>
+            <Route path="*" element={<Error/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
