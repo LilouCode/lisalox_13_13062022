@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { login } from "../_slices/auth";
 import { clearMessage } from "../_slices/message";
-import { toggleRemember, chargeToken } from "../_slices/user";
+import { toggleRemember, setRemember, chargeToken } from "../_slices/user";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -35,11 +35,12 @@ const Login = (props) => {
       .unwrap()
       .then((response) => {
         dispatch(chargeToken(response.user.body.token));
+        if(wantToBeRemembered){
+          localStorage.setItem("user", JSON.stringify(response.user));
+          dispatch(setRemember(false))
+        }
         props.history.push("/user");
         window.location.reload();
-        if (wantToBeRemembered) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
       })
       .catch(() => {
         setLoading(false);

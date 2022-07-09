@@ -20,7 +20,7 @@ const login = (email, password) => {
     .then((response) => {
       console.log(response);
       if (response.data.body.token) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        sessionStorage.setItem("user", JSON.stringify(response.data));
         console.log(JSON.stringify(response.data));
       }
       return response.data;
@@ -28,6 +28,7 @@ const login = (email, password) => {
 };
 
 const logout = () => {
+  sessionStorage.clear();
   localStorage.removeItem("user");
 };
 

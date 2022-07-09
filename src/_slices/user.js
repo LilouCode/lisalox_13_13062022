@@ -19,6 +19,9 @@ export const editNameSlice = createSlice({
       state.wantToBeRemembered = !state.wantToBeRemembered;
       console.log(state)
     },
+    setRemember: (state, {payload}) => {
+      state.wantToBeRemembered = payload;
+    },
     downloadUserInfos: (state, { payload }) => {
       state.data = payload;
     },
@@ -37,6 +40,7 @@ const { reducer, actions } = editNameSlice;
 export const {
   toggleEdition,
   toggleRemember,
+  setRemember,
   downloadUserInfos,
   deleteUserInfos,
   chargeToken,
