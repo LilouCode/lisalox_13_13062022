@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
 import argentBankLogo from "../assets/argentBankLogo.png";
+import NavLogged from "./NavLogged";
+import NavUnregistered from "./NavUnregistered";
+import { useSelector } from "react-redux";
 function Header() {
+    const { user: currentUser } = useSelector((state) => state.auth);
   return (
     <nav className="main-nav">
       <NavLink className="main-nav-logo" to={"/"}>
@@ -11,12 +15,8 @@ function Header() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
-      <div>
-        <NavLink className="main-nav-item" to={"/login"}>
-          <i className="fa fa-user-circle"></i>
-          Sign In
-        </NavLink>
-      </div>
+      {currentUser ? 
+      <NavLogged/> : <NavUnregistered/>}
     </nav>
   );
 }
