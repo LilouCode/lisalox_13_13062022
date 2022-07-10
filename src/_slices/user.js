@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  firstName:"",
+  lastName: "",
   token: "",
   data: {},
   isEditing: false,
@@ -11,6 +13,10 @@ export const editNameSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
+    editName: (state, {payload}) => {
+      state.firstName = payload[0]
+      state.lastName= payload[1]
+    },
     toggleEdition: (state) => {
       state.isEditing = !state.isEditing;
       console.log(state);
@@ -38,6 +44,7 @@ export const editNameSlice = createSlice({
 });
 const { reducer, actions } = editNameSlice;
 export const {
+  editName,
   toggleEdition,
   toggleRemember,
   setRemember,

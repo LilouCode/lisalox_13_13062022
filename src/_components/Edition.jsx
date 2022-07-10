@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearMessage } from "../_slices/message";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { toggleEdition } from "../_slices/user";
+import { toggleEdition, editName } from "../_slices/user";
 import axios from "axios";
 import authHeader from "../_services/auth-header";
 import * as Yup from "yup";
@@ -34,6 +34,7 @@ const Edition = () => {
       data: { "firstName":firstName, "lastName":lastName },
     }).then((response) => {
       console.log(response)
+      dispatch(editName([response.data.body.firstName, response.data.body.lastName]))
     });
     dispatch(toggleEdition())
   };

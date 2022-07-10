@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import Account from "../_components/Account";
 import UserService from "../_services/user.service";
 import { Navigate } from "react-router-dom";
-import {toggleEdition} from "../_slices/user"
+import {toggleEdition, editName} from "../_slices/user"
 import Edition from "../_components/Edition";
 
 const User = () => {
   const dispatch = useDispatch();
-  const {isEditing} = useSelector( (state) => state.user);
+  const {isEditing,firstName, lastName} = useSelector( (state) => state.user);
   const [content, setContent] = useState("");
   useEffect(() => {
     UserService.getUserBoard().then(
       (response) => {
         setContent(response.data.body);
+        dispatch(editName([response.data.body.firstName, response.data.body.lastName]))
         console.log(content);
       },
       (error) => {
@@ -38,7 +39,7 @@ const User = () => {
           <h1>
             Welcome back
             <br />
-            {content.firstName} {content.lastName}!
+            {firstName} {lastName}!
           </h1>
           <button className="edit-button" onClick={ () => dispatch(toggleEdition())}>Edit Name</button>
         </div>
