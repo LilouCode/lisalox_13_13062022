@@ -33,9 +33,9 @@ const Edition = () => {
       headers: authHeader(),
       data: { "firstName":firstName, "lastName":lastName },
     }).then((response) => {
-      console.log(response);
-      window.location.reload()
+      console.log(response)
     });
+    dispatch(toggleEdition())
   };
 
   return (
