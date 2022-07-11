@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Account from "../_components/Account";
-import UserService from "../_services/user.service";
+import Account from "../components/Account";
+import UserService from "../services/user.service";
 import { Navigate } from "react-router-dom";
-import {toggleEdition, editName} from "../_slices/user"
-import Edition from "../_components/Edition";
+import {toggleEdition, editName} from "../slices/user"
+import Edition from "../components/Edition";
 
 const User = () => {
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearMessage } from "../_slices/message";
+import { clearMessage } from "../slices/message";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { toggleEdition, editName } from "../_slices/user";
+import { toggleEdition, editName } from "../slices/user";
 import axios from "axios";
-import authHeader from "../_services/auth-header";
+import authHeader from "../services/auth-header";
 import * as Yup from "yup";
 
 const Edition = () => {
@@ -41,7 +41,7 @@ const Edition = () => {
 
   return (
     <div>
-      <div>
+      <div className="edition">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -64,15 +64,17 @@ const Edition = () => {
               <ErrorMessage name="lastName" component="div" />
             </div>
 
-            <button type="submit" className="sign-in-button">
+            <div className="edition-buttons">
+            <button type="submit" className="edit-button">
               Save
             </button>
             <button
-              className="sign-in-button"
+              className="edit-button"
               onClick={() => dispatch(toggleEdition())}
             >
               Cancel
             </button>
+            </div>
           </Form>
         </Formik>
       </div>

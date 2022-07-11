@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { logout } from "../_slices/auth";
+import { logout } from "../slices/auth";
 import { NavLink } from "react-router-dom";
 const NavLogged = () => {
     const {firstName} = useSelector((state) => state.user);

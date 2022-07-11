@@ -251,6 +251,15 @@ body {
   flex: 1;
 }
 
+.edition{
+  display: flex;
+  justify-content: center;
+  /* width: 40%; */
+}
+.edition-buttons{
+  display: flex;
+  justify-content: space-around;
+}
 .edit-button {
   border-color: #00bc77;
   background-color: #00bc77;
